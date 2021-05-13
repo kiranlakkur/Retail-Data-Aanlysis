@@ -1,0 +1,3 @@
+v1
+{"path":"hdfs://ip-172-31-33-155.ec2.internal:8020/user/hadoop/time_country_KPI/part-00000-697bf22a-79b9-445e-b741-d85a6433d55d-c000.json","size":0,"isDir":false,"modificationTime":1617443824926,"blockReplication":1,"blockSize":134217728,"action":"add"}
+{"path":"hdfs://ip-172-31-33-155.ec2.internal:8020/user/hadoop/time_country_KPI/part-00058-10bb6a9a-727f-4abb-85b0-2b810a03ee7b-c000.json","size":174,"isDir":false,"modificationTime":1617443828878,"blockReplication":1,"blockSize":134217728,"action":"add"}

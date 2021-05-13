@@ -1,0 +1,601 @@
+[hadoop@ip-172-31-33-155 ~]$ spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.7 read_retail.py
+Ivy Default Cache set to: /home/hadoop/.ivy2/cache
+The jars for the packages stored in: /home/hadoop/.ivy2/jars
+:: loading settings :: url = jar:file:/usr/lib/spark/jars/ivy-2.4.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+org.apache.spark#spark-sql-kafka-0-10_2.11 added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent-111dc906-42a1-4329-abff-db125cad8a8f;1.0
+        confs: [default]
+        found org.apache.spark#spark-sql-kafka-0-10_2.11;2.4.7 in central
+        found org.apache.kafka#kafka-clients;2.0.0 in central
+        found org.lz4#lz4-java;1.4.0 in central
+        found org.xerial.snappy#snappy-java;1.1.7.5 in central
+        found org.slf4j#slf4j-api;1.7.16 in central
+        found org.spark-project.spark#unused;1.0.0 in central
+:: resolution report :: resolve 619ms :: artifacts dl 16ms
+        :: modules in use:
+        org.apache.kafka#kafka-clients;2.0.0 from central in [default]
+        org.apache.spark#spark-sql-kafka-0-10_2.11;2.4.7 from central in [default]
+        org.lz4#lz4-java;1.4.0 from central in [default]
+        org.slf4j#slf4j-api;1.7.16 from central in [default]
+        org.spark-project.spark#unused;1.0.0 from central in [default]
+        org.xerial.snappy#snappy-java;1.1.7.5 from central in [default]
+        ---------------------------------------------------------------------
+        |                  |            modules            ||   artifacts   |
+        |       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+        ---------------------------------------------------------------------
+        |      default     |   6   |   0   |   0   |   0   ||   6   |   0   |
+        ---------------------------------------------------------------------
+:: retrieving :: org.apache.spark#spark-submit-parent-111dc906-42a1-4329-abff-db125cad8a8f
+        confs: [default]
+        0 artifacts copied, 6 already retrieved (0kB/14ms)
+21/04/03 09:52:39 INFO SparkContext: Running Spark version 2.4.7-amzn-0
+21/04/03 09:52:39 INFO SparkContext: Submitted application: retailstream
+21/04/03 09:52:39 INFO SecurityManager: Changing view acls to: hadoop
+21/04/03 09:52:39 INFO SecurityManager: Changing modify acls to: hadoop
+21/04/03 09:52:39 INFO SecurityManager: Changing view acls groups to:
+21/04/03 09:52:39 INFO SecurityManager: Changing modify acls groups to:
+21/04/03 09:52:39 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoop); groups with view permissions: Set(); users  with modify permissions: Set(hadoop); groups with modify permissions: Set()
+21/04/03 09:52:39 INFO Utils: Successfully started service 'sparkDriver' on port 38611.
+21/04/03 09:52:39 INFO SparkEnv: Registering MapOutputTracker
+21/04/03 09:52:39 INFO SparkEnv: Registering BlockManagerMaster
+21/04/03 09:52:39 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+21/04/03 09:52:39 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+21/04/03 09:52:39 INFO DiskBlockManager: Created local directory at /mnt/tmp/blockmgr-1bbe0d53-ff45-4f10-b1a2-e84fcbbd3f76
+21/04/03 09:52:39 INFO MemoryStore: MemoryStore started with capacity 1038.8 MB
+21/04/03 09:52:39 INFO SparkEnv: Registering OutputCommitCoordinator
+21/04/03 09:52:40 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+21/04/03 09:52:40 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://ip-172-31-33-155.ec2.internal:4040
+21/04/03 09:52:40 INFO Utils: Using initial executors = 50, max of spark.dynamicAllocation.initialExecutors, spark.dynamicAllocation.minExecutors and spark.executor.instances
+21/04/03 09:52:41 INFO RMProxy: Connecting to ResourceManager at ip-172-31-33-155.ec2.internal/172.31.33.155:8032
+21/04/03 09:52:41 INFO Client: Requesting a new application from cluster with 2 NodeManagers
+21/04/03 09:52:41 INFO Configuration: resource-types.xml not found
+21/04/03 09:52:41 INFO ResourceUtils: Unable to find 'resource-types.xml'.
+21/04/03 09:52:41 INFO ResourceUtils: Adding resource type - name = memory-mb, units = Mi, type = COUNTABLE
+21/04/03 09:52:41 INFO ResourceUtils: Adding resource type - name = vcores, units = , type = COUNTABLE
+21/04/03 09:52:41 INFO Client: Verifying our application has not requested more than the maximum memory capability of the cluster (6144 MB per container)
+21/04/03 09:52:42 INFO Client: Will allocate AM container, with 896 MB memory including 384 MB overhead
+21/04/03 09:52:42 INFO Client: Setting up container launch context for our AM
+21/04/03 09:52:42 INFO Client: Setting up the launch environment for our AM container
+21/04/03 09:52:42 INFO Client: Preparing resources for our AM container
+21/04/03 09:52:42 WARN Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+21/04/03 09:52:46 INFO Client: Uploading resource file:/mnt/tmp/spark-3d219043-3777-4696-9d79-12ba2b63bdbf/__spark_libs__6924822702214513863.zip -> hdfs://ip-172-31-33-155.ec2.internal:8020/user/hadoop/.sparkStaging/application_1617439659839_0007/__spark_libs__6924822702214513863.zip
+21/04/03 09:52:48 INFO Client: Uploading resource file:/home/hadoop/.ivy2/jars/org.apache.spark_spark-sql-kafka-0-10_2.11-2.4.7.jar -> hdfs://ip-172-31-33-155.ec2.internal:8020/user/hadoop/.sparkStaging/application_1617439659839_0007/org.apache.spark_spark-sql-kafka-0-10_2.11-2.4.7.jar
+21/04/03 09:52:48 INFO Client: Uploading resource file:/home/hadoop/.ivy2/jars/org.apache.kafka_kafka-clients-2.0.0.jar -> hdfs://ip-172-31-33-155.ec2.internal:8020/user/hadoop/.sparkStaging/application_1617439659839_0007/org.apache.kafka_kafka-clients-2.0.0.jar
+21/04/03 09:52:48 INFO Client: Uploading resource file:/home/hadoop/.ivy2/jars/org.spark-project.spark_unused-1.0.0.jar -> hdfs://ip-172-31-33-155.ec2.internal:8020/user/hadoop/.sparkStaging/application_1617439659839_0007/org.spark-project.spark_unused-1.0.0.jar
+21/04/03 09:52:48 INFO Client: Uploading resource file:/home/hadoop/.ivy2/jars/org.lz4_lz4-java-1.4.0.jar -> hdfs://ip-172-31-33-155.ec2.internal:8020/user/hadoop/.sparkStaging/application_1617439659839_0007/org.lz4_lz4-java-1.4.0.jar
+21/04/03 09:52:48 INFO Client: Uploading resource file:/home/hadoop/.ivy2/jars/org.xerial.snappy_snappy-java-1.1.7.5.jar -> hdfs://ip-172-31-33-155.ec2.internal:8020/user/hadoop/.sparkStaging/application_1617439659839_0007/org.xerial.snappy_snappy-java-1.1.7.5.jar
+21/04/03 09:52:49 INFO Client: Uploading resource file:/home/hadoop/.ivy2/jars/org.slf4j_slf4j-api-1.7.16.jar -> hdfs://ip-172-31-33-155.ec2.internal:8020/user/hadoop/.sparkStaging/application_1617439659839_0007/org.slf4j_slf4j-api-1.7.16.jar
+21/04/03 09:52:49 INFO Client: Uploading resource file:/usr/lib/spark/python/lib/pyspark.zip -> hdfs://ip-172-31-33-155.ec2.internal:8020/user/hadoop/.sparkStaging/application_1617439659839_0007/pyspark.zip
+21/04/03 09:52:49 INFO Client: Uploading resource file:/usr/lib/spark/python/lib/py4j-0.10.7-src.zip -> hdfs://ip-172-31-33-155.ec2.internal:8020/user/hadoop/.sparkStaging/application_1617439659839_0007/py4j-0.10.7-src.zip
+21/04/03 09:52:50 WARN Client: Same path resource file:///home/hadoop/.ivy2/jars/org.apache.spark_spark-sql-kafka-0-10_2.11-2.4.7.jar added multiple times to distributed cache.
+21/04/03 09:52:50 WARN Client: Same path resource file:///home/hadoop/.ivy2/jars/org.apache.kafka_kafka-clients-2.0.0.jar added multiple times to distributed cache.
+21/04/03 09:52:50 WARN Client: Same path resource file:///home/hadoop/.ivy2/jars/org.spark-project.spark_unused-1.0.0.jar added multiple times to distributed cache.
+21/04/03 09:52:50 WARN Client: Same path resource file:///home/hadoop/.ivy2/jars/org.lz4_lz4-java-1.4.0.jar added multiple times to distributed cache.
+21/04/03 09:52:50 WARN Client: Same path resource file:///home/hadoop/.ivy2/jars/org.xerial.snappy_snappy-java-1.1.7.5.jar added multiple times to distributed cache.
+21/04/03 09:52:50 WARN Client: Same path resource file:///home/hadoop/.ivy2/jars/org.slf4j_slf4j-api-1.7.16.jar added multiple times to distributed cache.
+21/04/03 09:52:50 INFO Client: Uploading resource file:/mnt/tmp/spark-3d219043-3777-4696-9d79-12ba2b63bdbf/__spark_conf__4345477303168843466.zip -> hdfs://ip-172-31-33-155.ec2.internal:8020/user/hadoop/.sparkStaging/application_1617439659839_0007/__spark_conf__.zip
+21/04/03 09:52:50 INFO SecurityManager: Changing view acls to: hadoop
+21/04/03 09:52:50 INFO SecurityManager: Changing modify acls to: hadoop
+21/04/03 09:52:50 INFO SecurityManager: Changing view acls groups to:
+21/04/03 09:52:50 INFO SecurityManager: Changing modify acls groups to:
+21/04/03 09:52:50 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoop); groups with view permissions: Set(); users  with modify permissions: Set(hadoop); groups with modify permissions: Set()
+21/04/03 09:52:52 INFO Client: Submitting application application_1617439659839_0007 to ResourceManager
+21/04/03 09:52:52 INFO YarnClientImpl: Submitted application application_1617439659839_0007
+21/04/03 09:52:52 INFO SchedulerExtensionServices: Starting Yarn extension services with app application_1617439659839_0007 and attemptId None
+21/04/03 09:52:53 INFO Client: Application report for application_1617439659839_0007 (state: ACCEPTED)
+21/04/03 09:52:53 INFO Client:
+         client token: N/A
+         diagnostics: AM container is launched, waiting for AM container to Register with RM
+         ApplicationMaster host: N/A
+         ApplicationMaster RPC port: -1
+         queue: default
+         start time: 1617443572484
+         final status: UNDEFINED
+         tracking URL: http://ip-172-31-33-155.ec2.internal:20888/proxy/application_1617439659839_0007/
+         user: hadoop
+21/04/03 09:52:54 INFO Client: Application report for application_1617439659839_0007 (state: ACCEPTED)
+21/04/03 09:52:55 INFO Client: Application report for application_1617439659839_0007 (state: ACCEPTED)
+21/04/03 09:52:56 INFO Client: Application report for application_1617439659839_0007 (state: ACCEPTED)
+21/04/03 09:52:57 INFO Client: Application report for application_1617439659839_0007 (state: ACCEPTED)
+21/04/03 09:52:58 INFO Client: Application report for application_1617439659839_0007 (state: ACCEPTED)
+21/04/03 09:52:59 INFO Client: Application report for application_1617439659839_0007 (state: RUNNING)
+21/04/03 09:52:59 INFO Client:
+         client token: N/A
+         diagnostics: N/A
+         ApplicationMaster host: 172.31.37.22
+         ApplicationMaster RPC port: -1
+         queue: default
+         start time: 1617443572484
+         final status: UNDEFINED
+         tracking URL: http://ip-172-31-33-155.ec2.internal:20888/proxy/application_1617439659839_0007/
+         user: hadoop
+21/04/03 09:52:59 INFO YarnClientSchedulerBackend: Application application_1617439659839_0007 has started running.
+21/04/03 09:52:59 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 33021.
+21/04/03 09:52:59 INFO NettyBlockTransferService: Server created on ip-172-31-33-155.ec2.internal:33021
+21/04/03 09:52:59 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+21/04/03 09:52:59 INFO YarnClientSchedulerBackend: Add WebUI Filter. org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter, Map(PROXY_HOSTS -> ip-172-31-33-155.ec2.internal, PROXY_URI_BASES -> http://ip-172-31-33-155.ec2.internal:20888/proxy/application_1617439659839_0007), /proxy/application_1617439659839_0007
+21/04/03 09:52:59 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, ip-172-31-33-155.ec2.internal, 33021, None)
+21/04/03 09:52:59 INFO BlockManagerMasterEndpoint: Registering block manager ip-172-31-33-155.ec2.internal:33021 with 1038.8 MB RAM, BlockManagerId(driver, ip-172-31-33-155.ec2.internal, 33021, None)
+21/04/03 09:52:59 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, ip-172-31-33-155.ec2.internal, 33021, None)
+21/04/03 09:52:59 INFO BlockManager: external shuffle service port = 7337
+21/04/03 09:52:59 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, ip-172-31-33-155.ec2.internal, 33021, None)
+21/04/03 09:52:59 INFO JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /metrics/json.
+21/04/03 09:53:00 INFO YarnSchedulerBackend$YarnSchedulerEndpoint: ApplicationMaster registered as NettyRpcEndpointRef(spark-client://YarnAM)
+21/04/03 09:53:00 INFO EventLoggingListener: Logging events to hdfs:/var/log/spark/apps/application_1617439659839_0007
+21/04/03 09:53:00 INFO Utils: Using initial executors = 50, max of spark.dynamicAllocation.initialExecutors, spark.dynamicAllocation.minExecutors and spark.executor.instances
+21/04/03 09:53:00 INFO YarnClientSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+21/04/03 09:53:00 INFO SharedState: loading hive config file: file:/etc/spark/conf.dist/hive-site.xml
+21/04/03 09:53:00 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir ('hdfs:///user/spark/warehouse').
+21/04/03 09:53:00 INFO SharedState: Warehouse path is 'hdfs:///user/spark/warehouse'.
+21/04/03 09:53:00 INFO JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /SQL.
+21/04/03 09:53:00 INFO JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /SQL/json.
+21/04/03 09:53:00 INFO JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /SQL/execution.
+21/04/03 09:53:00 INFO JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /SQL/execution/json.
+21/04/03 09:53:00 INFO JettyUtils: Adding filter org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter to /static/sql.
+21/04/03 09:53:01 INFO StateStoreCoordinatorRef: Registered StateStoreCoordinator endpoint
+-------------------------------------------
+Batch: 0
+-------------------------------------------
++----------+-------+---------+----------+-----------+--------+---------+
+|invoice_no|country|timestamp|total_cost|total_items|is_order|is_return|
++----------+-------+---------+----------+-----------+--------+---------+
++----------+-------+---------+----------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 1
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543506712|United Kingdom|2021-03-30 07:15:27|124.27000045776367|72         |1       |0        |
+|154132543532056|United Kingdom|2021-04-01 00:36:48|103.77999711036682|73         |1       |0        |
+|154132543473716|United Kingdom|2021-03-28 00:30:42|43.670000314712524|13         |1       |0        |
+|154132543558952|United Kingdom|2021-04-02 20:34:10|39.0              |20         |1       |0        |
+|154132543474672|United Kingdom|2021-03-28 02:05:05|20.5              |10         |1       |0        |
+|154132543452030|United Kingdom|2021-03-26 12:53:17|162.19999837875366|26         |1       |0        |
+|154132543471635|United Kingdom|2021-03-27 21:08:21|36.289999127388   |23         |1       |0        |
+|154132543468942|Germany       |2021-03-27 16:45:36|1.9500000476837158|1          |1       |0        |
+|154132543566172|United Kingdom|2021-04-03 08:26:43|51.060001373291016|29         |1       |0        |
+|154132543502750|United Kingdom|2021-03-30 00:42:07|187.78999602794647|103        |1       |0        |
+|154132543565492|United Kingdom|2021-04-03 07:19:51|27.589999198913574|19         |1       |0        |
+|154132543556000|United Kingdom|2021-04-02 15:41:55|27.5              |14         |1       |0        |
+|154132543449463|United Kingdom|2021-03-26 08:51:34|24.149999976158142|7          |1       |0        |
+|154132543508665|United Kingdom|2021-03-30 10:22:08|170.7599983215332 |38         |1       |0        |
+|154132543475776|United Kingdom|2021-03-28 03:55:14|15.800000190734863|2          |1       |0        |
+|154132543458162|United Kingdom|2021-03-26 23:11:26|184.6000030040741 |100        |1       |0        |
+|154132543543203|United Kingdom|2021-04-01 19:00:12|132.90000247955322|89         |1       |0        |
+|154132543531006|United Kingdom|2021-03-31 22:50:29|7.380000114440918 |3          |1       |0        |
+|154132543477729|United Kingdom|2021-03-28 07:10:48|1466.6999876499176|946        |1       |0        |
+|154132543461841|United Kingdom|2021-03-27 05:07:59|45.15000057220459 |26         |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+only showing top 20 rows
+
+-------------------------------------------
+Batch: 2
+-------------------------------------------
++----------+-------+---------+----------+-----------+--------+---------+
+|invoice_no|country|timestamp|total_cost|total_items|is_order|is_return|
++----------+-------+---------+----------+-----------+--------+---------+
++----------+-------+---------+----------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 3
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567004|France        |2021-04-03 09:52:40|44.52000045776367 |24         |1       |0        |
+|154132543567002|United Kingdom|2021-04-03 09:52:33|5.949999809265137 |1          |1       |0        |
+|154132543566999|United Kingdom|2021-04-03 09:52:26|20.09999990463257 |14         |1       |0        |
+|154132543567006|United Kingdom|2021-04-03 09:52:56|22.319999516010284|8          |1       |0        |
+|154132543567003|United Kingdom|2021-04-03 09:52:34|16.5              |10         |1       |0        |
+|154132543567000|United Kingdom|2021-04-03 09:52:30|43.88999927043915 |10         |1       |0        |
+|154132543567008|United Kingdom|2021-04-03 09:53:11|8.850000381469727 |3          |1       |0        |
+|154132543567009|United Kingdom|2021-04-03 09:53:13|159.0             |20         |1       |0        |
+|154132543567001|United Kingdom|2021-04-03 09:52:30|38.459999322891235|31         |1       |0        |
+|154132543567005|United Kingdom|2021-04-03 09:52:43|17.809999614953995|15         |1       |0        |
+|154132543566998|United Kingdom|2021-04-03 09:52:26|15.0              |12         |1       |0        |
+|154132543567007|United Kingdom|2021-04-03 09:53:01|21.83000087738037 |7          |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 2
+-------------------------------------------
++----------+-------+---------+----------+-----------+--------+---------+
+|invoice_no|country|timestamp|total_cost|total_items|is_order|is_return|
++----------+-------+---------+----------+-----------+--------+---------+
++----------+-------+---------+----------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 3
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567004|France        |2021-04-03 09:52:40|44.52000045776367 |24         |1       |0        |
+|154132543567002|United Kingdom|2021-04-03 09:52:33|5.949999809265137 |1          |1       |0        |
+|154132543566999|United Kingdom|2021-04-03 09:52:26|20.09999990463257 |14         |1       |0        |
+|154132543567006|United Kingdom|2021-04-03 09:52:56|22.319999516010284|8          |1       |0        |
+|154132543567003|United Kingdom|2021-04-03 09:52:34|16.5              |10         |1       |0        |
+|154132543567000|United Kingdom|2021-04-03 09:52:30|43.88999927043915 |10         |1       |0        |
+|154132543567008|United Kingdom|2021-04-03 09:53:11|8.850000381469727 |3          |1       |0        |
+|154132543567009|United Kingdom|2021-04-03 09:53:13|159.0             |20         |1       |0        |
+|154132543567001|United Kingdom|2021-04-03 09:52:30|38.459999322891235|31         |1       |0        |
+|154132543567005|United Kingdom|2021-04-03 09:52:43|17.809999614953995|15         |1       |0        |
+|154132543566998|United Kingdom|2021-04-03 09:52:26|15.0              |12         |1       |0        |
+|154132543567007|United Kingdom|2021-04-03 09:53:01|21.83000087738037 |7          |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+-------------------------------------------
+Batch: 4
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567010|United Kingdom|2021-04-03 09:53:18|68.43999892473221 |25         |1       |0        |
+|154132543567012|United Kingdom|2021-04-03 09:53:23|12.049999713897705|13         |1       |0        |
+|154132543567017|United Kingdom|2021-04-03 09:53:57|32.6200008392334  |14         |1       |0        |
+|154132543567016|United Kingdom|2021-04-03 09:53:41|45.37000000476837 |44         |1       |0        |
+|154132543567014|United Kingdom|2021-04-03 09:53:38|3.299999952316284 |2          |1       |0        |
+|154132543567013|United Kingdom|2021-04-03 09:53:25|21.19999933242798 |8          |1       |0        |
+|154132543567011|United Kingdom|2021-04-03 09:53:19|-172.749995470047 |85         |0       |1        |
+|154132543567018|United Kingdom|2021-04-03 09:54:15|72.1200008392334  |24         |1       |0        |
+|154132543567015|United Kingdom|2021-04-03 09:53:40|30.149999618530273|5          |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+
+
+-------------------------------------------
+Batch: 3
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567004|France        |2021-04-03 09:52:40|44.52000045776367 |24         |1       |0        |
+|154132543567002|United Kingdom|2021-04-03 09:52:33|5.949999809265137 |1          |1       |0        |
+|154132543566999|United Kingdom|2021-04-03 09:52:26|20.09999990463257 |14         |1       |0        |
+|154132543567006|United Kingdom|2021-04-03 09:52:56|22.319999516010284|8          |1       |0        |
+|154132543567003|United Kingdom|2021-04-03 09:52:34|16.5              |10         |1       |0        |
+|154132543567000|United Kingdom|2021-04-03 09:52:30|43.88999927043915 |10         |1       |0        |
+|154132543567008|United Kingdom|2021-04-03 09:53:11|8.850000381469727 |3          |1       |0        |
+|154132543567009|United Kingdom|2021-04-03 09:53:13|159.0             |20         |1       |0        |
+|154132543567001|United Kingdom|2021-04-03 09:52:30|38.459999322891235|31         |1       |0        |
+|154132543567005|United Kingdom|2021-04-03 09:52:43|17.809999614953995|15         |1       |0        |
+|154132543566998|United Kingdom|2021-04-03 09:52:26|15.0              |12         |1       |0        |
+|154132543567007|United Kingdom|2021-04-03 09:53:01|21.83000087738037 |7          |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+-------------------------------------------
+Batch: 4
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     -------------------------------------------
+Batch: 5
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567023|United Kingdom|2021-04-03 09:54:58|210.1199927330017 |28         |1       |0        |
+|154132543567024|United Kingdom|2021-04-03 09:54:59|124.5             |62         |1       |0        |
+|154132543567022|United Kingdom|2021-04-03 09:54:55|31.880000114440918|9          |1       |0        |
+|154132543567021|United Kingdom|2021-04-03 09:54:53|14.299999952316284|27         |1       |0        |
+|154132543567026|United Kingdom|2021-04-03 09:55:05|34.890000343322754|17         |1       |0        |
+|154132543567020|United Kingdom|2021-04-03 09:54:40|129.47999572753906|12         |1       |0        |
+|154132543567025|United Kingdom|2021-04-03 09:55:04|48.41999888420105 |38         |1       |0        |
+|154132543567029|United Kingdom|2021-04-03 09:55:16|77.84000086784363 |72         |1       |0        |
+|154132543567030|United Kingdom|2021-04-03 09:55:16|161.14000010490417|87         |1       |0        |
+|154132543567027|United Kingdom|2021-04-03 09:55:07|67.5999984741211  |12         |1       |0        |
+|154132543567019|United Kingdom|2021-04-03 09:54:32|5.099999904632568 |2          |1       |0        |
+|154132543567028|United Kingdom|2021-04-03 09:55:10|63.0600004196167  |20         |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 6
+-------------------------------------------
++---------------+--------------+-------------------+-------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost         |total_items|is_order|is_return|
++---------------+--------------+-------------------+-------------------+-----------+--------+---------+
+|154132543567034|United Kingdom|2021-04-03 09:56:18|-63.03999948501587 |28         |0       |1        |
+|154132543567031|United Kingdom|2021-04-03 09:55:43|24.600000381469727 |10         |1       |0        |
+|154132543567033|United Kingdom|2021-04-03 09:56:17|-44.299999833106995|28         |0       |1        |
+|154132543567032|United Kingdom|2021-04-03 09:56:08|132.6799936890602  |79         |1       |0        |
+|154132543567035|Portugal      |2021-04-03 09:56:19|34.15000057220459  |20         |1       |0        |
++---------------+--------------+-------------------+-------------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 7
+-------------------------------------------
++---------------+--------------+-------------------+-----------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost       |total_items|is_order|is_return|
++---------------+--------------+-------------------+-----------------+-----------+--------+---------+
+|154132543567036|United Kingdom|2021-04-03 09:56:20|96.92000150680542|38         |1       |0        |
+|154132543567040|United Kingdom|2021-04-03 09:57:05|76.28999710083008|31         |1       |0        |
+|154132543567039|United Kingdom|2021-04-03 09:56:45|1.649999976158142|1          |1       |0        |
+|154132543567037|United Kingdom|2021-04-03 09:56:20|94.50000607967377|63         |1       |0        |
+|154132543567038|EIRE          |2021-04-03 09:56:41|26.25            |7          |1       |0        |
++---------------+--------------+-------------------+-----------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 8
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567054|United Kingdom|2021-04-03 09:58:05|5.789999961853027 |1          |1       |0        |
+|154132543567052|United Kingdom|2021-04-03 09:57:57|-48.34000015258789|58         |0       |1        |
+|154132543567045|United Kingdom|2021-04-03 09:57:35|10.079999923706055|24         |1       |0        |
+|154132543567043|United Kingdom|2021-04-03 09:57:24|136.73000073432922|61         |1       |0        |
+|154132543567047|Netherlands   |2021-04-03 09:57:38|5.900000095367432 |2          |1       |0        |
+|154132543567050|United Kingdom|2021-04-03 09:57:49|13.039999961853027|8          |1       |0        |
+|154132543567051|United Kingdom|2021-04-03 09:57:52|27.039999127388   |13         |1       |0        |
+|154132543567041|Cyprus        |2021-04-03 09:57:14|5.449999809265137 |1          |1       |0        |
+|154132543567049|United Kingdom|2021-04-03 09:57:49|2.5500000715255737|3          |1       |0        |
+|154132543567048|United Kingdom|2021-04-03 09:57:47|56.93000030517578 |15         |1       |0        |
+|154132543567042|United Kingdom|2021-04-03 09:57:19|19.799999237060547|4          |1       |0        |
+|154132543567044|Spain         |2021-04-03 09:57:26|23.84999942779541 |19         |1       |0        |
+|154132543567053|United Kingdom|2021-04-03 09:58:04|47.09999957680702 |27         |1       |0        |
+|154132543567046|United Kingdom|2021-04-03 09:57:35|26.170000076293945|14         |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 9
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567056|United Kingdom|2021-04-03 09:58:21|71.79000091552734 |25         |1       |0        |
+|154132543567063|United Kingdom|2021-04-03 09:59:05|33.54999840259552 |32         |1       |0        |
+|154132543567062|Finland       |2021-04-03 09:59:03|670.6800231933594 |450        |1       |0        |
+|154132543567058|United Kingdom|2021-04-03 09:58:25|19.91999912261963 |2          |1       |0        |
+|154132543567057|United Kingdom|2021-04-03 09:58:22|60.53999710083008 |21         |1       |0        |
+|154132543567059|United Kingdom|2021-04-03 09:58:52|19.500000476837158|18         |1       |0        |
+|154132543567060|United Kingdom|2021-04-03 09:58:53|280.91999512910843|26         |1       |0        |
+|154132543567061|United Kingdom|2021-04-03 09:59:00|94.52999913692474 |73         |1       |0        |
+|154132543567055|United Kingdom|2021-04-03 09:58:07|23.710000038146973|12         |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 10
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567064|United Kingdom|2021-04-03 09:59:21|7.800000190734863 |4          |1       |0        |
+|154132543567075|United Kingdom|2021-04-03 10:00:32|72.25999999046326 |52         |1       |0        |
+|154132543567067|United Kingdom|2021-04-03 09:59:31|89.87999844551086 |66         |1       |0        |
+|154132543567065|United Kingdom|2021-04-03 09:59:21|57.03000122308731 |23         |1       |0        |
+|154132543567079|United Kingdom|2021-04-03 10:00:56|127.05000162124634|149        |1       |0        |
+|154132543567077|United Kingdom|2021-04-03 10:00:38|51.50999903678894 |29         |1       |0        |
+|154132543567069|United Kingdom|2021-04-03 09:59:43|358.0399899482727 |181        |1       |0        |
+|154132543567071|United Kingdom|2021-04-03 09:59:47|20.689999848604202|11         |1       |0        |
+|154132543567072|United Kingdom|2021-04-03 09:59:53|64.3700008392334  |42         |1       |0        |
+|154132543567078|United Kingdom|2021-04-03 10:00:56|1.6199999451637268|4          |1       |0        |
+|154132543567068|United Kingdom|2021-04-03 09:59:36|17.400001525878906|12         |1       |0        |
+|154132543567070|United Kingdom|2021-04-03 09:59:45|56.66999816894531 |27         |1       |0        |
+|154132543567074|United Kingdom|2021-04-03 10:00:14|33.299999952316284|26         |1       |0        |
+|154132543567066|United Kingdom|2021-04-03 09:59:27|13.40999984741211 |3          |1       |0        |
+|154132543567076|United Kingdom|2021-04-03 10:00:36|10.700000047683716|14         |1       |0        |
+|154132543567073|United Kingdom|2021-04-03 10:00:04|8.399999618530273 |4          |1       |0        |
+|154132543567080|Portugal      |2021-04-03 10:00:58|30.1899995803833  |3          |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 11
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567084|United Kingdom|2021-04-03 10:02:05|16.87000012397766 |3          |1       |0        |
+|154132543567082|United Kingdom|2021-04-03 10:01:29|48.920000076293945|32         |1       |0        |
+|154132543567081|United Kingdom|2021-04-03 10:01:23|2190.3599770069122|777        |1       |0        |
+|154132543567083|United Kingdom|2021-04-03 10:01:35|3.9000000953674316|2          |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 12
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567088|United Kingdom|2021-04-03 10:02:39|5.099999904632568 |2          |1       |0        |
+|154132543567089|Japan         |2021-04-03 10:02:57|15.0              |12         |1       |0        |
+|154132543567090|United Kingdom|2021-04-03 10:02:58|55.39999961853027 |41         |1       |0        |
+|154132543567086|United Kingdom|2021-04-03 10:02:30|90.95000004768372 |13         |1       |0        |
+|154132543567085|United Kingdom|2021-04-03 10:02:22|99.03000199794769 |46         |1       |0        |
+|154132543567087|United Kingdom|2021-04-03 10:02:31|27.060000896453857|21         |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 13
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567101|United Kingdom|2021-04-03 10:03:36|47.02999883890152 |17         |1       |0        |
+|154132543567091|EIRE          |2021-04-03 10:03:09|6.710000038146973 |2          |1       |0        |
+|154132543567094|United Kingdom|2021-04-03 10:03:24|39.31000065803528 |57         |1       |0        |
+|154132543567095|United Kingdom|2021-04-03 10:03:24|285.6400002539158 |98         |1       |0        |
+|154132543567098|United Kingdom|2021-04-03 10:03:34|2.5               |2          |1       |0        |
+|154132543567103|United Kingdom|2021-04-03 10:04:00|46.409998416900635|19         |1       |0        |
+|154132543567104|United Kingdom|2021-04-03 10:04:00|28.34999942779541 |17         |1       |0        |
+|154132543567097|United Kingdom|2021-04-03 10:03:31|23.25999927520752 |11         |1       |0        |
+|154132543567096|United Kingdom|2021-04-03 10:03:26|53.09999942779541 |11         |1       |0        |
+|154132543567092|United Kingdom|2021-04-03 10:03:21|51.44999694824219 |7          |1       |0        |
+|154132543567099|United Kingdom|2021-04-03 10:03:34|36.239999413490295|16         |1       |0        |
+|154132543567102|United Kingdom|2021-04-03 10:03:50|5.039999961853027 |12         |1       |0        |
+|154132543567093|United Kingdom|2021-04-03 10:03:21|48.53999936580658 |55         |1       |0        |
+|154132543567100|Finland       |2021-04-03 10:03:34|173.44999742507935|65         |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 14
+-------------------------------------------
++---------------+--------------+-------------------+-------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost         |total_items|is_order|is_return|
++---------------+--------------+-------------------+-------------------+-----------+--------+---------+
+|154132543567106|United Kingdom|2021-04-03 10:04:16|48.35999953746796  |22         |1       |0        |
+|154132543567109|United Kingdom|2021-04-03 10:04:27|199.09999871253967 |49         |1       |0        |
+|154132543567111|United Kingdom|2021-04-03 10:04:33|2.5                |2          |1       |0        |
+|154132543567119|United Kingdom|2021-04-03 10:04:54|49.09999990463257  |8          |1       |0        |
+|154132543567108|United Kingdom|2021-04-03 10:04:25|30.0               |24         |1       |0        |
+|154132543567114|United Kingdom|2021-04-03 10:04:39|30.769999861717224 |7          |1       |0        |
+|154132543567116|United Kingdom|2021-04-03 10:04:44|14.329999923706055 |29         |1       |0        |
+|154132543567113|United Kingdom|2021-04-03 10:04:38|25.00999927520752  |11         |1       |0        |
+|154132543567118|Belgium       |2021-04-03 10:04:54|-19.899999618530273|2          |0       |1        |
+|154132543567110|United Kingdom|2021-04-03 10:04:32|11.450000762939453 |13         |1       |0        |
+|154132543567117|United Kingdom|2021-04-03 10:04:50|65.18000030517578  |10         |1       |0        |
+|154132543567105|United Kingdom|2021-04-03 10:04:07|-55.8100026845932  |15         |0       |1        |
+|154132543567115|United Kingdom|2021-04-03 10:04:41|141.92000234127045 |35         |1       |0        |
+|154132543567107|United Kingdom|2021-04-03 10:04:22|8.750000238418579  |5          |1       |0        |
+|154132543567112|United Kingdom|2021-04-03 10:04:36|3.2899999618530273 |1          |1       |0        |
++---------------+--------------+-------------------+-------------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 15
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567123|United Kingdom|2021-04-03 10:05:49|45.59999656677246 |10         |1       |0        |
+|154132543567121|United Kingdom|2021-04-03 10:05:37|225.18000900745392|76         |1       |0        |
+|154132543567120|United Kingdom|2021-04-03 10:05:05|11.900000095367432|10         |1       |0        |
+|154132543567122|United Kingdom|2021-04-03 10:05:46|33.15999984741211 |4          |1       |0        |
+|154132543567125|United Kingdom|2021-04-03 10:06:04|52.83000189065933 |17         |1       |0        |
+|154132543567124|United Kingdom|2021-04-03 10:05:50|884.9099998474121 |702        |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 16
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567133|United Kingdom|2021-04-03 10:06:50|29.990000009536743|31         |1       |0        |
+|154132543567129|United Kingdom|2021-04-03 10:06:24|17.149999618530273|27         |1       |0        |
+|154132543567130|United Kingdom|2021-04-03 10:06:34|5.510000228881836 |1          |1       |0        |
+|154132543567128|United Kingdom|2021-04-03 10:06:22|-7.799999713897705|12         |0       |1        |
+|154132543567132|EIRE          |2021-04-03 10:06:49|31.09000015258789 |5          |1       |0        |
+|154132543567127|United Kingdom|2021-04-03 10:06:20|16.329999923706055|29         |1       |0        |
+|154132543567134|EIRE          |2021-04-03 10:06:55|57.379998207092285|20         |1       |0        |
+|154132543567135|United Kingdom|2021-04-03 10:07:07|10.490000486373901|5          |1       |0        |
+|154132543567131|United Kingdom|2021-04-03 10:06:44|30.479999542236328|4          |1       |0        |
+|154132543567126|United Kingdom|2021-04-03 10:06:14|96.35000133514404 |43         |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 17
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567144|United Kingdom|2021-04-03 10:07:36|594.7200317382812 |144        |1       |0        |
+|154132543567146|United Kingdom|2021-04-03 10:07:57|5.039999961853027 |12         |1       |0        |
+|154132543567138|United Kingdom|2021-04-03 10:07:12|23.799999237060547|4          |1       |0        |
+|154132543567141|United Kingdom|2021-04-03 10:07:24|17.839999228715897|8          |1       |0        |
+|154132543567145|United Kingdom|2021-04-03 10:07:45|53.150001525878906|21         |1       |0        |
+|154132543567139|United Kingdom|2021-04-03 10:07:13|100.46999931335449|17         |1       |0        |
+|154132543567148|United Kingdom|2021-04-03 10:08:02|5.909999996423721 |3          |1       |0        |
+|154132543567140|EIRE          |2021-04-03 10:07:16|1.649999976158142 |1          |1       |0        |
+|154132543567136|United Kingdom|2021-04-03 10:07:09|42.28999996185303 |29         |1       |0        |
+|154132543567137|Portugal      |2021-04-03 10:07:12|12.599999904632568|2          |1       |0        |
+|154132543567147|United Kingdom|2021-04-03 10:07:59|33.429999589920044|5          |1       |0        |
+|154132543567142|United Kingdom|2021-04-03 10:07:27|5.849999964237213 |13         |1       |0        |
+|154132543567143|United Kingdom|2021-04-03 10:07:33|42.950000524520874|34         |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 18
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567152|United Kingdom|2021-04-03 10:08:11|178.22999584674835|79         |1       |0        |
+|154132543567159|United Kingdom|2021-04-03 10:08:48|35.400001525878906|12         |1       |0        |
+|154132543567151|United Kingdom|2021-04-03 10:08:11|4.949999809265137 |1          |1       |0        |
+|154132543567161|United Kingdom|2021-04-03 10:09:03|11.800000190734863|4          |1       |0        |
+|154132543567158|United Kingdom|2021-04-03 10:08:47|50.5              |30         |1       |0        |
+|154132543567153|United Kingdom|2021-04-03 10:08:20|2.509999990463257 |1          |1       |0        |
+|154132543567155|United Kingdom|2021-04-03 10:08:34|17.040000677108765|16         |1       |0        |
+|154132543567154|United Kingdom|2021-04-03 10:08:30|72.50000190734863 |38         |1       |0        |
+|154132543567149|United Kingdom|2021-04-03 10:08:07|51.0              |16         |1       |0        |
+|154132543567157|United Kingdom|2021-04-03 10:08:40|413.0             |100        |1       |0        |
+|154132543567156|United Kingdom|2021-04-03 10:08:38|19.81999969482422 |8          |1       |0        |
+|154132543567150|Austria       |2021-04-03 10:08:07|17.25             |3          |1       |0        |
+|154132543567160|United Kingdom|2021-04-03 10:09:00|5.099999904632568 |2          |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 19
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567164|United Kingdom|2021-04-03 10:09:35|56.83999902009964 |54         |1       |0        |
+|154132543567169|United Kingdom|2021-04-03 10:09:52|22.279999613761902|30         |1       |0        |
+|154132543567166|United Kingdom|2021-04-03 10:09:42|120.25000095367432|75         |1       |0        |
+|154132543567165|United Kingdom|2021-04-03 10:09:38|51.599998474121094|16         |1       |0        |
+|154132543567167|United Kingdom|2021-04-03 10:09:43|33.30999946594238 |37         |1       |0        |
+|154132543567170|United Kingdom|2021-04-03 10:09:53|83.79999995231628 |16         |1       |0        |
+|154132543567162|United Kingdom|2021-04-03 10:09:29|19.799999237060547|12         |1       |0        |
+|154132543567163|United Kingdom|2021-04-03 10:09:32|46.099998235702515|11         |1       |0        |
+|154132543567168|United Kingdom|2021-04-03 10:09:51|7.03000020980835  |2          |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 20
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567176|Finland       |2021-04-03 10:11:01|57.709999442100525|15         |1       |0        |
+|154132543567174|United Kingdom|2021-04-03 10:10:43|67.18999910354614 |40         |1       |0        |
+|154132543567171|United Kingdom|2021-04-03 10:10:04|25.34000027179718 |12         |1       |0        |
+|154132543567173|Belgium       |2021-04-03 10:10:37|35.40000057220459 |8          |1       |0        |
+|154132543567175|United Kingdom|2021-04-03 10:10:52|17.59000015258789 |13         |1       |0        |
+|154132543567172|EIRE          |2021-04-03 10:10:34|255.91999608278275|34         |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 21
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567180|United Kingdom|2021-04-03 10:11:35|67.47000241279602 |48         |1       |0        |
+|154132543567178|United Kingdom|2021-04-03 10:11:23|147.35999751091003|69         |1       |0        |
+|154132543567177|United Kingdom|2021-04-03 10:11:19|8.260000228881836 |2          |1       |0        |
+|154132543567182|United Kingdom|2021-04-03 10:12:00|82.5              |10         |1       |0        |
+|154132543567179|United Kingdom|2021-04-03 10:11:26|10.230000495910645|10         |1       |0        |
+|154132543567181|United Kingdom|2021-04-03 10:11:57|2.5               |2          |1       |0        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 22
+-------------------------------------------
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost        |total_items|is_order|is_return|
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+|154132543567183|United Kingdom|2021-04-03 10:12:04|163.30999946594238|76         |1       |0        |
+|154132543567187|United Kingdom|2021-04-03 10:12:44|28.420001983642578|13         |1       |0        |
+|154132543567184|United Kingdom|2021-04-03 10:12:05|45.30000114440918 |14         |1       |0        |
+|154132543567185|United Kingdom|2021-04-03 10:12:24|31.780000686645508|14         |1       |0        |
+|154132543567186|United Kingdom|2021-04-03 10:12:34|37.439998626708984|96         |1       |0        |
+|154132543567188|United Kingdom|2021-04-03 10:12:59|-32.6700005531311 |11         |0       |1        |
++---------------+--------------+-------------------+------------------+-----------+--------+---------+
+
+-------------------------------------------
+Batch: 23
+-------------------------------------------
++---------------+--------------+-------------------+-------------------+-----------+--------+---------+
+|invoice_no     |country       |timestamp          |total_cost         |total_items|is_order|is_return|
++---------------+--------------+-------------------+-------------------+-----------+--------+---------+
+|154132543567189|United Kingdom|2021-04-03 10:13:02|46.52000045776367  |4          |1       |0        |
+|154132543567201|United Kingdom|2021-04-03 10:13:55|37.76999855041504  |15         |1       |0        |
+|154132543567195|United Kingdom|2021-04-03 10:13:31|16.40000009536743  |27         |1       |0        |
+|154132543567198|United Kingdom|2021-04-03 10:13:37|-92.52000141143799 |13         |0       |1        |
+|154132543567199|France        |2021-04-03 10:13:43|34.10999834537506  |3          |1       |0        |
+|154132543567194|United Kingdom|2021-04-03 10:13:25|85.5799994468689   |32         |1       |0        |
+|154132543567197|United Kingdom|2021-04-03 10:13:34|17.890000104904175 |5          |1       |0        |
+|154132543567190|United Kingdom|2021-04-03 10:13:08|120.92999982833862 |97         |1       |0        |
+|154132543567200|United Kingdom|2021-04-03 10:13:51|28.5               |4          |1       |0        |
+|154132543567192|United Kingdom|2021-04-03 10:13:11|10.5               |25         |1       |0        |
+|154132543567191|United Kingdom|2021-04-03 10:13:08|58.449999928474426 |30         |1       |0        |
+|154132543567193|Spain         |2021-04-03 10:13:17|-14.100000143051147|5          |0       |1        |
+|154132543567196|United Kingdom|2021-04-03 10:13:34|11.050000786781311 |13         |1       |0        |
++---------------+--------------+-------------------+-------------------+-----------+--------+---------+
+
